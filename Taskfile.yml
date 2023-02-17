@@ -35,3 +35,12 @@ tasks:
     - mv state_6.txt state/group6.txt
     - rm state/group7.txt
     - mv state_7.txt state/group7.txt
+
+  rename:
+    desc: rename SRC to TRG
+    cmds:
+    - mv "state/{{.SRC}}.mid" "state/{{.TRG}}.mid"
+    - cmd: echo "rename in state"
+      silent: true
+    - cmd: sed -i'.bak' -e 's/{{.SRC}}.mid/{{.TRG}}.mid/g' state.txt
+      silent: true
