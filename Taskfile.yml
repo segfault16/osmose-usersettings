@@ -39,8 +39,28 @@ tasks:
   rename:
     desc: rename SRC to TRG
     cmds:
+    - test -f "state/{{.SRC}}.mid" && echo "{{.SRC}} exists."
+    - cmd: echo {{default "failed" .TRG }} | grep -v failed || (echo ERROR - TRG variable not set && exit 255)
+      silent: true
     - mv "state/{{.SRC}}.mid" "state/{{.TRG}}.mid"
     - cmd: echo "rename in state"
       silent: true
     - cmd: sed -i'.bak' -e 's/{{.SRC}}.mid/{{.TRG}}.mid/g' state.txt
       silent: true
+    - cmd: sed -i'.bak' -e 's/{{.SRC}}.mid/{{.TRG}}.mid/g' state/group0.txt
+      silent: true
+    - cmd: sed -i'.bak' -e 's/{{.SRC}}.mid/{{.TRG}}.mid/g' state/group1.txt
+      silent: true
+    - cmd: sed -i'.bak' -e 's/{{.SRC}}.mid/{{.TRG}}.mid/g' state/group2.txt
+      silent: true
+    - cmd: sed -i'.bak' -e 's/{{.SRC}}.mid/{{.TRG}}.mid/g' state/group3.txt
+      silent: true
+    - cmd: sed -i'.bak' -e 's/{{.SRC}}.mid/{{.TRG}}.mid/g' state/group4.txt
+      silent: true
+    - cmd: sed -i'.bak' -e 's/{{.SRC}}.mid/{{.TRG}}.mid/g' state/group5.txt
+      silent: true
+    - cmd: sed -i'.bak' -e 's/{{.SRC}}.mid/{{.TRG}}.mid/g' state/group6.txt
+      silent: true
+    - cmd: sed -i'.bak' -e 's/{{.SRC}}.mid/{{.TRG}}.mid/g' state/group7.txt
+      silent: true
+    - rm state/*.bak
