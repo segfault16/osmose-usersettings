@@ -1,0 +1,37 @@
+version: 3
+
+tasks:
+  deconstruct:
+    desc: group to single file
+    cmds:
+      - rm state.txt || true
+      - cat state/group0.txt >> state.txt
+      - cat state/group1.txt >> state.txt
+      - cat state/group2.txt >> state.txt
+      - cat state/group3.txt >> state.txt
+      - cat state/group4.txt >> state.txt
+      - cat state/group5.txt >> state.txt
+      - cat state/group6.txt >> state.txt
+      - cat state/group7.txt >> state.txt
+      - python3 remove_prefix.py
+  
+  construct:
+    desc: single file to group files
+    cmds:
+    - python3 split.py
+    - rm state/group0.txt
+    - mv state_0.txt state/group0.txt
+    - rm state/group1.txt
+    - mv state_1.txt state/group1.txt
+    - rm state/group2.txt
+    - mv state_2.txt state/group2.txt
+    - rm state/group3.txt
+    - mv state_3.txt state/group3.txt
+    - rm state/group4.txt
+    - mv state_4.txt state/group4.txt
+    - rm state/group5.txt
+    - mv state_5.txt state/group5.txt
+    - rm state/group6.txt
+    - mv state_6.txt state/group6.txt
+    - rm state/group7.txt
+    - mv state_7.txt state/group7.txt
